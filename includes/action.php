@@ -44,7 +44,7 @@ class IDPay_Action_After_Submit extends \ElementorPro\Modules\Forms\Classes\Acti
         $settings = $record->get( 'form_settings' );
 
         $api_key = $this->get_global_setting('idpay_api_key');
-        $sandbox = $this->get_global_setting('idpay_sandbox') || 'false';
+        $sandbox = ($this->get_global_setting('idpay_sandbox') == 'false') ? 0 : 1;
         $currency = $this->get_global_setting('idpay_currency') || 'rial';
 
         if ( empty( $api_key ) ) {
